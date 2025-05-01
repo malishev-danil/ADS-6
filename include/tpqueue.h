@@ -5,14 +5,16 @@
 #include <stdexcept>
 template<typename T>
 class TPQueue {
-private: 
+
+ private:
 struct Node {
 T data;
 Node* next;
 Node(const T& data_) : data(data_), next(nullptr) {}
 };
-Node* head; // голова очереди
-public: 
+Node* head;
+
+ public:
 TPQueue() : head(nullptr) {}
 ~TPQueue() {
 while (head) {
@@ -52,8 +54,8 @@ void print() const {
 Node* current = head;
 std::cout << "Очередь: ";
 while (current) {
-std::cout << "(" << current->data.ch << ", 
-  pri=" << current->data.prior << ") -> ";
+std::cout << std::string("(") + current->data.ch + ", pri=" +
+  std::to_string(current->data.prior) + ") -> ";
 current = current->next;
 }
 std::cout << "NULL\n";
